@@ -1,0 +1,155 @@
+{% from 'macros/helpers.html' import sprite %} <!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>{% block title %}{{ title }}{% endblock %}</title>
+    <link
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      rel="stylesheet"
+      integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="stylesheets/app.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    {% include "shared/app-icons.html" %} {% block head %}{% endblock %}
+  </head>
+  <body>
+    {% block content %}{% endblock %} {% block javascript %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.min.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="javascripts/app.js"></script>
+    <script>
+      // var margin = 0,
+      //   width = 600 - margin,
+      //   height = 200 - margin;
+
+      // var colorRange = ['#d7191c', '#fdae61', '#ffffbf', '#a6d96a', '#1a9641']; //['#ffffcc', '#a1dab4', '#41b6c4', '#2c7fb8', '#253494']
+
+      // var color = d3
+      //   .scaleLinear()
+      //   .range(colorRange)
+      //   .domain([1, 2, 3, 4, 5]);
+
+      // var data = [
+      //   { x: 10, y: 20 },
+      //   { x: 20, y: 60 },
+      //   { x: 30, y: 50 },
+      //   { x: 40, y: 130 },
+      //   { x: 50, y: 30 },
+      //   { x: 60, y: 170 },
+      //   { x: 70, y: 24 },
+      //   { x: 80, y: 130 },
+      //   { x: 90, y: 70 },
+      //   { x: 100, y: 180 }
+      // ];
+
+      // var size = {
+      //   width: window.innerWidth || document.body.clientWidth,
+      //   height: window.innerHeight || document.body.clientHeight
+      // };
+
+      // var x = d3.scaleLinear().range([0, width]);
+      // var y = d3.scaleLinear().range([height, 0]);
+
+      // x.domain(
+      //   d3.extent(data, function(d) {
+      //     return d.x;
+      //   })
+      // ).nice;
+      // y.domain(
+      //   d3.extent(data, function(d) {
+      //     return d.y;
+      //   })
+      // ).nice;
+
+      // var line = d3
+      //   .line()
+      //   .x(function(d) {
+      //     return x(d.x);
+      //   })
+      //   .y(function(d) {
+      //     return y(d.y);
+      //   })
+      //   .curve(d3.curveCardinal);
+
+      // var svg = d3
+      //   .select('.phone-container')
+      //   .append('svg')
+      //   .attr('class', function(d) {
+      //     return 'myClass';
+      //   })
+      //   .attr('width', size.width)
+      //   .attr('height', height + margin * 2)
+      //   .append('g')
+      //   .attr('transform', 'translate(' + margin + ',' + margin + ')');
+
+      // var linearGradient = svg
+      //   .append('defs')
+      //   .append('linearGradient')
+      //   .attr('id', 'linear-gradient')
+      //   .attr('gradientTransform', 'rotate(90)');
+
+      // linearGradient
+      //   .append('stop')
+      //   .attr('offset', '0%')
+      //   .attr('stop-color', color(1));
+
+      // linearGradient
+      //   .append('stop')
+      //   .attr('offset', '25%')
+      //   .attr('stop-color', color(2));
+
+      // linearGradient
+      //   .append('stop')
+      //   .attr('offset', '50%')
+      //   .attr('stop-color', color(3));
+
+      // linearGradient
+      //   .append('stop')
+      //   .attr('offset', '75%')
+      //   .attr('stop-color', color(4));
+
+      // linearGradient
+      //   .append('stop')
+      //   .attr('offset', '100%')
+      //   .attr('stop-color', color(5));
+
+      // svg
+      //   .append('path')
+      //   .attr('d', line(data))
+      //   .attr('stroke-width', 6)
+      //   .attr('stroke', 'url(#linear-gradient)')
+      //   .attr('fill', 'none')
+      //   .attr('class', function(d) {
+      //     return 'myLine';
+      //   });
+
+      // var path = document.querySelector('.myLine');
+      // var length = path.getTotalLength();
+      // console.log(length);
+
+      // var svgNew = document.getElementById('newSvg');
+      // svgNew.setAttribute('style', `width: ${size.width} `);
+    </script>
+    {% endblock %}
+
+    <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: 'AIzaSyAllwUcWBQTnT1c8QaNK01oKWG5UJGWU5k',
+        authDomain: 'pi-ostelco-web.firebaseapp.com',
+        databaseURL: 'https://pi-ostelco-web.firebaseio.com',
+        projectId: 'pi-ostelco-web',
+        storageBucket: 'pi-ostelco-web.appspot.com',
+        messagingSenderId: '844305452223'
+      };
+      firebase.initializeApp(config);
+    </script>
+  </body>
+</html>

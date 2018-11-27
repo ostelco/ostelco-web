@@ -1,0 +1,18 @@
+@font-face {
+  font-family: 'Telenor';
+  src: url('../../fonts/Telenor.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Telenor-Bold';
+  src: url('../../fonts/Telenor-Bold.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Telenor-Light';
+  src: url('../../fonts/TelenorLight.otf') format('opentype');
+}
+
+body {
+  font-family: 'Telenor', sans-serif;
+}

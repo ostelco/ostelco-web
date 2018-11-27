@@ -1,0 +1,87 @@
+{# Nunjucks Templating! Homepage: https://mozilla.github.io/nunjucks/ Docs:
+https://mozilla.github.io/nunjucks/api.html #} {% extends
+'layouts/application.html' %} {% block content %}
+<!-- <path
+  style="z-index: 1000;"
+  d="M 435 599 C 204 634 450 387 11 268 M 79 419 C 342.5 435 292.5 149 3 194 M 165 121 L 135.5 110 Q 120.5 60 45.5 73 M 383.5 131 Q 219.5 19 209.5 65 L 498 93 "
+> -->
+  <div class="main-callout">
+    <div class="main-container">
+      <div class="text-container">
+        <div class="logo-container">
+            <img src="../images/Oya - Horizontal.svg" alt="logo for oya" width="151px" height="44px">
+        </div>
+
+        <div class="text-div">  
+          <h3>Bursting your data every month?</h3>
+          <h3> Struggling with the wifi on the MRT?</h3>
+          <h4>Get more data hassle free!</h4>
+          <!-- <h4>We'll keep you posted! &#x1F60D;</h4> -->
+          <form class="input-container" >
+              <input class="email-input" placeholder="Your email"/>
+              <button class="email-button">Get early access</button>
+          </form>
+        </div>
+        <div class="learn-more-container" >
+          <h4 style="text-align: right;">
+            Learn more
+            <a href="#info-text-div" class="scroll-link" id="chevron-click">
+              <i class="fa fa-angle-down"  style="font-size:24px;color:white"></i>
+            </a>
+          </h4>
+        </div>
+      </div>
+      <div class="phone-container">
+        <!-- Sätt Svg path on hold tillsvidare -->
+          <!-- <svg id="newSvg" version="1.1" id="Layer_1" class="myClass" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+          viewBox="0 0 820 339" preserveAspectRatio="none " style="enable-background:new 0 0 820 339;" xml:space="preserve">
+       <g id="Landing-Page" 
+         <g id="_x31_-1-Start---Oya" transform="translate(0.000000, -56.000000)">
+           <g id="Phone" transform="translate(-59.000000, 58.000000)">
+             <g id="Graph" transform="translate(0.000000, 0.415942)">
+               
+                 <linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="170.8246" y1="587.6832" x2="171.8235" y2="586.6844" gradientTransform="matrix(879.3871 0 0 -335.5526 -150265.2969 197212.4688)">
+                 <stop  offset="0" style="stop-color:#FFE736"/>
+                 <stop  offset="1" style="stop-color:#66FFE9"/>
+               </linearGradient>
+               <path class="st0 myLine" d="M-0.8,193.1C87.7,63.4,166.9-1.6,236.9-1.6c29.4,0,57.3,6.8,90.5,20.7c9.5,4,19.4,8.5,31.8,14.4
+                 c5.6,2.7,27.4,13.3,32.7,15.8c29.4,14.1,51.1,23.3,74.7,31.1c29.6,9.8,59.3,16,91,18.4c67.4,5.2,121.8,23.5,162.4,51.7
+                 c32.8,22.8,54.9,51.1,63.2,77.2c8,24.9,22.8,45.8,43.2,64.2c10,9.1,19,15.7,33.6,25.6c13.9,9.4,17,14.3,17,14.3" fill="none"stroke="url(#SVGID_1_)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+             </g>
+           </g>
+         </g>
+       </g>
+       </svg> -->
+      
+      </div>
+    </div>
+  </div>
+  <div class="info-text" id="info-text-div">
+    <div class="text-block">
+      <h2 style="text-align: center;">Simple</h2>
+      <p>
+          We’ve stripped away the hassle with traditional phone plans and made a really simple app. 
+          The result? Easy access to the one thing we believe you actually care about: data. As simple as that.
+      </p>
+    </div>
+    <div class="text-block">
+      <h2 style="text-align: center;">Flexible</h2>
+      <p>
+          With most things in this world, once you buy something it’s usually yours. 
+          In our opinion, the same should apply for data. Pay for the data you need and spend it whenever you like within the next year. 
+          If it’s now, or in three months, it’s yours to keep!
+      </p>
+    </div>
+    <div class="text-block">
+        <h2 style="text-align: center;">Fair</h2>
+        <p>
+            Fairness is not really a feature we can promote. It’s something that you have to experience for yourself. 
+            We want you to stay because you like our service and how we treat you, rather than by locking you into a contract you can’t get out of. 
+            We’ll be honest with you from the start, what you see is what you get. And then we’ll want the same from you in return. 
+            If there’s something you think we can improve, tell us. After all, we’re building this for you. 
+        </p>
+      </div>
+  </div>
+
+  {% endblock %}
+</path>
