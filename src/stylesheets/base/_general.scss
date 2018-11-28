@@ -37,3 +37,21 @@ body {
   left: 0.25em;
   transform: rotate(-135deg);
 }
+/**
+ * Errors
+ */
+.error {
+  border-color: red;
+}
+
+.error-message {
+  color: red;
+  font-style: italic;
+  margin-bottom: 1em;
+}
+
+.success-message {
+  color: green;
+  font-style: italic;
+  margin-bottom: 1em;
+}
