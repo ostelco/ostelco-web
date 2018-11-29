@@ -99,10 +99,15 @@ input {
   letter-spacing: normal;
   color: $text-color-white;
 }
+
 .email-input {
   flex-grow: 2;
+  background-color: $main-background-blue !important;
   /* And hide the input's outline, so the form looks like the outline */
   border: none;
+  &:focus {
+    outline: 0;
+  }
 }
 .email-button {
   font-family: 'Telenor';
@@ -119,6 +124,18 @@ input {
   border-radius: 25px;
   border-color: $button-accent-red;
   background-color: $button-accent-red;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    // transform: scale(1.02);
+    width: 162px;
+    height: 47px;
+  }
+  &:focus {
+    width: 162px;
+    height: 47px;
+    outline: 0;
+  }
 }
 
 .phone-container {
@@ -157,8 +174,8 @@ input {
   border: 0;
   padding-bottom: 100px;
 
-  :focus {
-    outline: focus-ring-color auto 0;
+  &:focus {
+    outline: 0;
   }
 }
 

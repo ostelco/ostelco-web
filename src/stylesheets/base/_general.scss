@@ -8,6 +8,14 @@ body {
 //   outline: 1px red solid;
 // }
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px $main-background-blue inset;
+  -webkit-text-fill-color: $text-color-white !important;
+}
+
 .chevron::before {
   border-style: solid;
   border-width: 0.1em 0.1em 0 0;
