@@ -1,5 +1,25 @@
 import './modules';
 
+//Make the input form sticky on scroll for mobile
+
+var sticky = document.getElementById('mc-embedded-subscribe-form');
+
+var stickySibling = sticky.previousElementSibling;
+
+window.addEventListener('scroll', function(e) {
+  var offsets = stickySibling.getBoundingClientRect();
+  var bottom = offsets.bottom;
+
+  if (bottom <= 0) {
+    sticky.style.position = 'fixed';
+    sticky.style.top = 0;
+    sticky.style.backgroundColor = '#2f16e8';
+  } else {
+    sticky.style.position = 'initial';
+    sticky.style.backgroundColor = 'transparent';
+  }
+});
+
 function validate_input(email) {
   var re = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/i;
   return re.test(email);
