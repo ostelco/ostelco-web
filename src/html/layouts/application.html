@@ -11,6 +11,11 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="stylesheets/app.css" />
+    <link
+      rel="shortcut icon"
+      type="image/png"
+      href="../../images/Favicon 16x16.png"
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     {% include "shared/app-icons.html" %} {% block head %}{% endblock %}
   </head>
@@ -22,146 +27,32 @@
       integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
       crossorigin="anonymous"
     ></script>
-    <!--
-      <script
-        type="text/javascript"
-        src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"
-      ></script>
-      <script type="text/javascript">
-        (function($) {
-          window.fnames = new Array();
-          window.ftypes = new Array();
-          fnames[0] = 'EMAIL';
-          ftypes[0] = 'email';
-          fnames[1] = 'FNAME';
-          ftypes[1] = 'text';
-          fnames[2] = 'LNAME';
-          ftypes[2] = 'text';
-          fnames[3] = 'ADDRESS';
-          ftypes[3] = 'address';
-          fnames[4] = 'PHONE';
-          ftypes[4] = 'phone';
-          fnames[5] = 'BIRTHDAY';
-          ftypes[5] = 'birthday';
-        })(jQuery);
-        var $mcj = jQuery.noConflict(true);
-      </script>
-    -->
+    <script
+      type="text/javascript"
+      src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"
+    ></script>
+    <script type="text/javascript">
+      (function($) {
+        window.fnames = new Array();
+        window.ftypes = new Array();
+        fnames[0] = 'EMAIL';
+        ftypes[0] = 'email';
+        fnames[1] = 'FNAME';
+        ftypes[1] = 'text';
+        fnames[2] = 'LNAME';
+        ftypes[2] = 'text';
+        fnames[3] = 'ADDRESS';
+        ftypes[3] = 'address';
+        fnames[4] = 'PHONE';
+        ftypes[4] = 'phone';
+        fnames[5] = 'BIRTHDAY';
+        ftypes[5] = 'birthday';
+      })(jQuery);
+      var $mcj = jQuery.noConflict(true);
+    </script>
 
     <script src="javascripts/app.js"></script>
-    <script>
-      // var margin = 0,
-      //   width = 600 - margin,
-      //   height = 200 - margin;
 
-      // var colorRange = ['#d7191c', '#fdae61', '#ffffbf', '#a6d96a', '#1a9641']; //['#ffffcc', '#a1dab4', '#41b6c4', '#2c7fb8', '#253494']
-
-      // var color = d3
-      //   .scaleLinear()
-      //   .range(colorRange)
-      //   .domain([1, 2, 3, 4, 5]);
-
-      // var data = [
-      //   { x: 10, y: 20 },
-      //   { x: 20, y: 60 },
-      //   { x: 30, y: 50 },
-      //   { x: 40, y: 130 },
-      //   { x: 50, y: 30 },
-      //   { x: 60, y: 170 },
-      //   { x: 70, y: 24 },
-      //   { x: 80, y: 130 },
-      //   { x: 90, y: 70 },
-      //   { x: 100, y: 180 }
-      // ];
-
-      // var size = {
-      //   width: window.innerWidth || document.body.clientWidth,
-      //   height: window.innerHeight || document.body.clientHeight
-      // };
-
-      // var x = d3.scaleLinear().range([0, width]);
-      // var y = d3.scaleLinear().range([height, 0]);
-
-      // x.domain(
-      //   d3.extent(data, function(d) {
-      //     return d.x;
-      //   })
-      // ).nice;
-      // y.domain(
-      //   d3.extent(data, function(d) {
-      //     return d.y;
-      //   })
-      // ).nice;
-
-      // var line = d3
-      //   .line()
-      //   .x(function(d) {
-      //     return x(d.x);
-      //   })
-      //   .y(function(d) {
-      //     return y(d.y);
-      //   })
-      //   .curve(d3.curveCardinal);
-
-      // var svg = d3
-      //   .select('.phone-container')
-      //   .append('svg')
-      //   .attr('class', function(d) {
-      //     return 'myClass';
-      //   })
-      //   .attr('width', size.width)
-      //   .attr('height', height + margin * 2)
-      //   .append('g')
-      //   .attr('transform', 'translate(' + margin + ',' + margin + ')');
-
-      // var linearGradient = svg
-      //   .append('defs')
-      //   .append('linearGradient')
-      //   .attr('id', 'linear-gradient')
-      //   .attr('gradientTransform', 'rotate(90)');
-
-      // linearGradient
-      //   .append('stop')
-      //   .attr('offset', '0%')
-      //   .attr('stop-color', color(1));
-
-      // linearGradient
-      //   .append('stop')
-      //   .attr('offset', '25%')
-      //   .attr('stop-color', color(2));
-
-      // linearGradient
-      //   .append('stop')
-      //   .attr('offset', '50%')
-      //   .attr('stop-color', color(3));
-
-      // linearGradient
-      //   .append('stop')
-      //   .attr('offset', '75%')
-      //   .attr('stop-color', color(4));
-
-      // linearGradient
-      //   .append('stop')
-      //   .attr('offset', '100%')
-      //   .attr('stop-color', color(5));
-
-      // svg
-      //   .append('path')
-      //   .attr('d', line(data))
-      //   .attr('stroke-width', 6)
-      //   .attr('stroke', 'url(#linear-gradient)')
-      //   .attr('fill', 'none')
-      //   .attr('class', function(d) {
-      //     return 'myLine';
-      //   });
-
-      // var path = document.querySelector('.myLine');
-      // var length = path.getTotalLength();
-      // console.log(length);
-
-      // var svgNew = document.getElementById('newSvg');
-      // svgNew.setAttribute('style', `width: ${size.width} `);
-    </script>
     <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
     <script>
       // Initialize Firebase

@@ -19,11 +19,11 @@ module.exports = {
     server: {
       // should match `dest` in
       // path-config.json
-      baseDir: 'public'
+      baseDir: './public'
     }
   },
 
   production: {
-    rev: true
+    rev: false
   }
 };

@@ -1,4 +1,4 @@
-import './modules';
+// import './modules';
 
 //Make the input form sticky on scroll for mobile
 
@@ -12,11 +12,16 @@ window.addEventListener('scroll', function(e) {
 
   if (bottom <= 0) {
     sticky.style.position = 'fixed';
-    sticky.style.top = 0;
+    sticky.style.top = '1px';
     sticky.style.backgroundColor = '#2f16e8';
+    if (window.screen.width >= 1224) {
+      sticky.style.width = '366px';
+    } else {
+      sticky.style.width = '90%';
+    }
   } else {
     sticky.style.position = 'initial';
-    sticky.style.backgroundColor = 'transparent';
+    sticky.style.backgroundColor = '#2f16e8';
   }
 });
 
@@ -59,7 +64,7 @@ function validate_input(email) {
 //     success: function(data) {
 //       if (data.result != 'success') {
 //         // Something went wrong, do something to notify the user. maybe alert(data.msg);
-//         console.log(data.msg);
+//         console.log('something went wrong', data.msg);
 //       } else {
 //         // It worked, carry on...
 //         console.log('it worked', data);
@@ -644,7 +649,7 @@ var removeError = function(field) {
   if (!id) return;
 
   // Check if an error message is in the DOM
-  var message = field.form.querySelector('.error-message#error-for-' + id + '');
+  var message = field.form.querySelector('.error-message');
   if (!message) return;
 
   // If so, hide it
@@ -693,6 +698,24 @@ var serialize = function(form) {
 // Display the form status
 window.displayMailChimpStatus = function(data) {
   console.log(data);
+
+  var msgFromMailChimp = document.getElementsByClassName('error-message')[0];
+  if (!msgFromMailChimp) {
+    msgFromMailChimp = document.createElement('div');
+    msgFromMailChimp.className = 'error-message';
+  }
+  console.log(msgFromMailChimp);
+  msgFromMailChimp.innerHTML = data.msg;
+  var element = document.getElementById('text-div');
+  element.appendChild(msgFromMailChimp);
+
+  msgFromMailChimp.style.display = 'block';
+  msgFromMailChimp.style.visibility = 'visible';
+  console.log(data.result);
+  if (data.result !== 'error') {
+    var mySuccess = document.getElementById('success-message-custom');
+    mySuccess.innerHTML = "We'll keep you posted! &#x1F60D;";
+  }
 };
 
 // Submit the form
@@ -774,6 +797,7 @@ document.addEventListener(
 
     // Otherwise, let the form submit normally
     // You could also bolt in an Ajax form submit process here
+
     submitMailChimpForm(event.target);
   },
   false

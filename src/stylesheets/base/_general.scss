@@ -8,6 +8,10 @@ body {
 //   outline: 1px red solid;
 // }
 
+a:-webkit-any-link {
+  text-decoration: none;
+}
+
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
