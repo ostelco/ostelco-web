@@ -1,4 +1,5 @@
-// import './modules';
+import './modules';
+// import './modules/mandrill.min.js';
 
 //Make the input form sticky on scroll for mobile
 
@@ -23,6 +24,56 @@ window.addEventListener('scroll', function(e) {
     sticky.style.position = 'initial';
     sticky.style.backgroundColor = '#2f16e8';
   }
+});
+
+function sendMail() {
+  $.ajax({
+    type: 'POST',
+    url: 'https://mandrillapp.com/api/1.0/messages/send.json',
+    data: {
+      key: 'jjfLjytUVDALbHntg_EFnA',
+      message: {
+        from_email: 'YOUR_SENDER@example.com',
+        to: [
+          {
+            email: 'henrik.holmlund@gmail.com',
+            name: 'YOUR_RECEIVER_NAME',
+            type: 'to'
+          }
+        ],
+        subject: 'title',
+        html: 'html can be used'
+      }
+    }
+  });
+}
+
+var m = new mandrill.Mandrill('jjfLjytUVDALbHntg_EFnA'); // This will be public
+
+$('#mc-embedded-subscribe').on('click', function(e) {
+  var email = $('.email-input').val();
+
+  var params = {
+    template_name: 'welcome-email-version-2',
+    template_content: [],
+
+    message: {
+      from_email: 'hello@oya.sg',
+      to: [{ email: email }],
+      subject: 'Hello from OYA',
+      text: 'text in the message'
+    }
+  };
+
+  m.messages.sendTemplate(
+    params,
+    function(res) {
+      console.log(res);
+    },
+    function(err) {
+      console.log(err);
+    }
+  );
 });
 
 function validate_input(email) {
@@ -740,6 +791,45 @@ var submitMailChimpForm = function(form) {
   script.onload = function() {
     this.remove();
   };
+
+  // sendMandrillEmail();
+};
+
+var sendMandrillEmail = function() {
+  // var email = $("#email").val();
+  // var array = email.split(',');
+  // var name = $("#name").val();
+  // var msg = $("#msg").val();
+
+  $.ajax({
+    type: 'POST',
+    url: 'https://mandrillapp.com/api/1.0/messages/send-template.json',
+    data: {
+      key: 'jjfLjytUVDALbHntg_EFnA',
+      template_name: 'welcome-email-version-2',
+      template_content: [],
+      message: {
+        from_email: 'hello@oya.sg',
+        to: [
+          {
+            email: 'henrik.holmlund@gmail.com',
+            name: 'RECIPIENT NAME (OPTIONAL)',
+            type: 'to'
+          }
+        ],
+        autotext: 'true',
+        subject: 'hello',
+        html: 'test'
+      },
+      async: true
+    }
+  })
+    .done(function(response) {
+      console.log(response);
+    })
+    .fail(function(response) {
+      alert('Error sending message.' + response);
+    });
 };
 
 // Listen to all blur events
@@ -797,8 +887,92 @@ document.addEventListener(
 
     // Otherwise, let the form submit normally
     // You could also bolt in an Ajax form submit process here
+    // $.ajax({
+    //   type: 'POST',
+    //   url: 'https://mandrillapp.com/api/1.0/messages/send-template.json',
+    //   data: {
+    //     key: 'jjfLjytUVDALbHntg_EFnA',
+    //     template_name: 'welcome-email-version-2',
+    //     template_content: [
+    //       {
+    //         name: 'example name',
+    //         content: 'example content'
+    //       }
+    //     ],
+    //     message: {
+    //       from_email: 'hello@oya.sg',
+    //       from_name: 'OYA',
+    //       to: [
+    //         {
+    //           email: 'henrik.holmlund@gmail.com',
+    //           name: 'Recipient Name',
+    //           type: 'to'
+    //         }
+    //       ],
+    //       headers: {
+    //         'Reply-To': 'hello@oya.sg'
+    //       },
+    //       important: false,
+    //       track_opens: null,
+    //       track_clicks: null,
+    //       auto_text: null,
+    //       auto_html: null,
+    //       inline_css: null,
+    //       url_strip_qs: null,
+    //       preserve_recipients: null,
+    //       view_content_link: null,
+    //       bcc_address: 'message.bcc_address@example.com',
+    //       tracking_domain: null,
+    //       signing_domain: null,
+    //       return_path_domain: null,
+    //       merge: true,
+    //       merge_language: 'mailchimp',
+    //       global_merge_vars: [
+    //         {
+    //           name: 'merge1',
+    //           content: 'merge1 content'
+    //         }
+    //       ],
+    //       merge_vars: [
+    //         {
+    //           rcpt: 'recipient.email@example.com',
+    //           vars: [
+    //             {
+    //               name: 'merge2',
+    //               content: 'merge2 content'
+    //             }
+    //           ]
+    //         }
+    //       ],
+    //       tags: ['password-resets'],
+    //       subaccount: 'customer-123',
+    //       google_analytics_domains: ['example.com'],
+    //       google_analytics_campaign: 'message.from_email@example.com',
+    //       metadata: {
+    //         website: 'www.example.com'
+    //       },
+    //       recipient_metadata: [
+    //         {
+    //           rcpt: 'recipient.email@example.com',
+    //           values: {
+    //             user_id: 123456
+    //           }
+    //         }
+    //       ]
+    //     },
+    //     async: false,
+    //     ip_pool: 'Main Pool'
+    //   }
+    // })
+    //   .done(function(response) {
+    //     console.log(response);
+    //   })
+    //   .fail(function(response) {
+    //     alert('Error sending message.' + response);
+    //   });
 
     submitMailChimpForm(event.target);
+    sendTheMail();
   },
   false
 );
