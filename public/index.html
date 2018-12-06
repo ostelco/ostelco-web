@@ -3,7 +3,14 @@
   <head>
     <meta charset="utf-8" />
     <title>OYA</title>
+
     <link rel="stylesheet" href="css/styles.min.css">
+    <link
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      rel="stylesheet"
+      integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+      crossorigin="anonymous"
+    />
     <link
       rel="shortcut icon"
       type="image/png"
@@ -44,13 +51,13 @@
               <!-- Begin Mailchimp Signup Form -->
 
               <form
-                action="https://oya.us19.list-manage.com/subscribe/post?u=93e34c1d1b6305299f56d8b16&amp;id=1213aa640c"
-                method="post"
+                action="https://oya.us19.list-manage.com/subscribe/post-json?u=93e34c1d1b6305299f56d8b16&amp;id=1213aa640c&c=?"
+                method="get"
                 id="mc-embedded-subscribe-form"
                 name="mc-embedded-subscribe-form"
                 class="validate input-container"
                 target="_blank"
-                validate
+                novalidate
               >
                 <div>
                   <input
@@ -87,16 +94,19 @@
                 </div>
               </form>
               <div id="mce-responses" class="error-message-container">
-                <div
-                  class="response error-message"
-                  id="mce-error-response"
-                  style="display:none"
-                ></div>
-                <div
-                  class="response success-message"
-                  id="mce-success-response"
-                  style="display:none"
-                ></div>
+                <div class="subscribe-result"></div>
+                <!--
+                  <div
+                    class="response error-message"
+                    id="subscribe-result"
+                    style="display:none"
+                  ></div>
+                  <div
+                    class="response success-message"
+                    id="mce-success-response"
+                    style="display:none"
+                  ></div>
+                -->
               </div>
             </div>
             <div class="learn-more-container">
@@ -135,6 +145,56 @@
     <!--[if lt IE 9]>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
     <![endif]-->
+
+    <!--
+      <script src="js/lib/a-library.js"></script>
+      <script src="js/lib/another-library.js"></script>
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.min.js"></script>
+    -->
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"
+    ></script>
+
+    <script
+      type="text/javascript"
+      src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"
+    ></script>
+    <script type="text/javascript">
+      (function($) {
+        window.fnames = new Array();
+        window.ftypes = new Array();
+        fnames[0] = 'EMAIL';
+        ftypes[0] = 'email';
+        fnames[1] = 'FNAME';
+        ftypes[1] = 'text';
+        fnames[2] = 'LNAME';
+        ftypes[2] = 'text';
+        fnames[3] = 'ADDRESS';
+        ftypes[3] = 'address';
+        fnames[4] = 'PHONE';
+        ftypes[4] = 'phone';
+        fnames[5] = 'BIRTHDAY';
+        ftypes[5] = 'birthday';
+      })(jQuery);
+      var $mcj = jQuery.noConflict(true);
+    </script>
+
     <script src="js/main.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: 'AIzaSyAllwUcWBQTnT1c8QaNK01oKWG5UJGWU5k',
+        authDomain: 'pi-ostelco-web.firebaseapp.com',
+        databaseURL: 'https://pi-ostelco-web.firebaseio.com',
+        projectId: 'pi-ostelco-web',
+        storageBucket: 'pi-ostelco-web.appspot.com',
+        messagingSenderId: '844305452223'
+      };
+      firebase.initializeApp(config);
+    </script>
   </body>
 </html>
