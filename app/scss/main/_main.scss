@@ -103,7 +103,11 @@ input {
   color: $text-color-white;
 }
 
+.input-container--child {
+}
+
 .email-input {
+  box-sizing: border-box;
   padding-left: 10px;
   width: 100%;
   background-color: $main-background-blue !important;
@@ -204,6 +208,18 @@ input {
   color: $text-color-white;
 }
 
+.subscribe-result {
+  padding-top: 12px;
+  text-align: right;
+  font-family: Telenor;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+}
+
 .error-message-container {
   max-width: 379px;
 }
@@ -298,12 +314,6 @@ input {
     border: 1px solid $text-color-white;
     padding: 0 8px 0 8px;
   }
-  .input-container--inner {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-  }
 
   input {
     background-color: transparent;
@@ -327,7 +337,7 @@ input {
     color: $text-color-white;
   }
   .email-input {
-    flex-grow: 2;
+    // flex-grow: 2;
     /* And hide the input's outline, so the form looks like the outline */
     border: none;
   }

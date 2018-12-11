@@ -19,9 +19,6 @@ body {
   margin: 0;
   padding: 0; }
 
-* {
-  outline: 1px red solid; }
-
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
@@ -239,6 +236,8 @@ input {
   color: #fff; }
 
 .email-input {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
   padding-left: 10px;
   width: 100%;
   background-color: #2f16e8 !important;
@@ -348,6 +347,17 @@ input {
 
 .success-message {
   color: #fff; }
+
+.subscribe-result {
+  padding-top: 12px;
+  text-align: right;
+  font-family: Telenor;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal; }
 
 .error-message-container {
   max-width: 379px; }
@@ -460,20 +470,6 @@ input {
     border-radius: 31px;
     border: 1px solid #fff;
     padding: 0 8px 0 8px; }
-  .input-container--inner {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: row;
-    flex-direction: row;
-    -webkit-box-pack: justify;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center; }
   input {
     background-color: transparent;
     font-family: 'Telenor';
@@ -512,9 +508,6 @@ input {
     letter-spacing: normal;
     color: #fff; }
   .email-input {
-    -webkit-box-flex: 2;
-    -ms-flex-positive: 2;
-    flex-grow: 2;
     /* And hide the input's outline, so the form looks like the outline */
     border: none; }
   .email-button {

@@ -24,7 +24,10 @@ gulp.task('browser-sync', function() {
   browserSync.init({
     server: {
       baseDir: 'app'
-    }
+    },
+    online: true,
+    tunnel: true,
+    logLevel: 'debug'
   });
 });
 
@@ -110,5 +113,5 @@ gulp.task('build', function(callback) {
 });
 
 gulp.task('default', function(callback) {
-  runSequence(['sass', 'browser-sync', 'watch'], callback);
+  runSequence(['sass', 'watch'], callback);
 });

@@ -17,7 +17,7 @@ var myWidth = window.addEventListener('resize', function(e) {
 });
 
 var sticky = document.getElementById('mc-embedded-subscribe-form');
-
+var input = document.getElementById('mce-EMAIL');
 var stickySibling = sticky.previousElementSibling;
 var learnMore = document.querySelector('.learn-more-container');
 
@@ -26,6 +26,7 @@ window.addEventListener('scroll', function(e) {
   var bottom = offsets.bottom;
 
   if (bottom <= 0) {
+    console.log('true');
     sticky.style.position = 'fixed';
     sticky.style.top = '8px';
     sticky.style.backgroundColor = '#2f16e8';
@@ -46,6 +47,100 @@ window.addEventListener('scroll', function(e) {
     }
   }
 });
+
+// input.addEventListener('touchstart', function() {
+//   console.log('hello');
+//   //If using a non-px value, you will have to get clever, or just use 0 and live with the temporary jump.
+
+//   //Switch to position absolute.
+//   sticky.style.position = 'absolute';
+//   sticky.style.top = '8px';
+//   //Switch back when focus is lost.
+//   function blured() {
+//     sticky.style.position = '';
+//     sticky.style.bottom = '';
+//     input.removeEventListener('blur', blured);
+//   }
+//   input.addEventListener('blur', blured);
+// });
+
+var myVar = false;
+
+$('#mce-EMAIL').on('touchstart', function() {
+  myVar = true;
+  console.log(myVar);
+});
+
+$('#mce-EMAIL').on('blur', function() {
+  myVar = false;
+  console.log(myVar);
+});
+
+// var focussed = input.addEventListener('focus', function(e) {
+//   console.log('element was focused', e.returnValue);
+//   return e.returnValue;
+// });
+
+// console.log(focussed);
+// function moveHeader() {
+//   var $sticky = $('#mc-embedded-subscribe-form');
+//   $sticky.css('top', '8px');
+// }
+
+// var deferredMoveHeader = function() {
+//   var $sticky = $('#mc-embedded-subscribe-form');
+//   setTimeout(function() {
+//     if ($sticky.css('position') == 'absolute') {
+//       moveHeader();
+//     }
+//   }, 100);
+// };
+
+// $(document)
+//   .on('focus', 'input, textarea', function(e) {
+//     console.log('input has focus');
+//     var $sticky = $('#mc-embedded-subscribe-form');
+//     $sticky.css('position', 'relative');
+//     $sticky.css('top', '8px');
+//     $(document).on('scroll', scrolling);
+//     $(document).on('input', deferredMoveHeader); //if focused input was out of screen and after input content was scrolled; deferred because scroll will be done after input event but we need `moveHeader` after scroll is completed
+//   })
+//   .on('blur', 'input, textarea', function(e) {
+//     var $sticky = $('#mc-embedded-subscribe-form');
+//     $sticky.css('position', 'absolute');
+//     $sticky.css('position', 'fixed');
+//     $(document).off('scroll', scrolling);
+//     $(document).off('input', deferredMoveHeader);
+//     $sticky.css('top', 0);
+//   });
+
+// $(document).ready(function() {
+//   var _originalSize = $(window).width() + $(window).height();
+//   $(window).resize(function() {
+//     if ($(window).width() + $(window).height() != _originalSize) {
+//       $('.main-callout').css('backgroundColor', 'red');
+//       $(sticky).css('borderColor', 'red');
+//     } else {
+//       $(sticky).css('borderWidth', '1px');
+//       $(sticky).css('borderColor', 'white');
+//     }
+//   });
+// });
+
+// $('#mce-EMAIL').on('blur', function() {
+//   $(sticky).css('top', '8px');
+// });
+
+// $(document).on('focus', 'input, textarea', function() {
+//   setTimeout(function() {
+//     window.scrollTo(document.body.scrollLeft, document.body.scrollTop);
+//   }, 0);
+// });
+// $(document).on('blur', 'input, textarea', function() {
+//   setTimeout(function() {
+//     window.scrollTo(document.body.scrollLeft, document.body.scrollTop);
+//   }, 0);
+// });
 
 // function sendMail() {
 //   $.ajax({
