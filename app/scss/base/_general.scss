@@ -1,15 +1,12 @@
 html,
 body {
+  height: 100%;
   margin: 0;
   padding: 0;
 }
 
-// * {
-//   outline: 1px red solid;
-// }
-
-a:-webkit-any-link {
-  text-decoration: none;
+* {
+  outline: 1px red solid;
 }
 
 input:-webkit-autofill,
@@ -20,6 +17,22 @@ input:-webkit-autofill:active {
   -webkit-text-fill-color: $text-color-white !important;
 }
 
+a:-webkit-any-link {
+  text-decoration: none;
+}
+
+h3,
+h4 {
+  margin: 0 0 30px 0;
+}
+
+h3:first-child {
+  margin: 30px 0 30px 0;
+}
+
+.subscribe-result a {
+  color: $button-accent-red;
+}
 .chevron::before {
   border-style: solid;
   border-width: 0.1em 0.1em 0 0;
