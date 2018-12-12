@@ -36,6 +36,7 @@ window.addEventListener('scroll', function(e) {
       sticky.style.width = '366px';
     } else {
       sticky.style.width = '90%';
+      sticky.style.maxWidth = '366px';
     }
   } else {
     sticky.style.position = 'initial';
@@ -45,6 +46,7 @@ window.addEventListener('scroll', function(e) {
       sticky.style.width = '366px';
     } else {
       sticky.style.width = '100%';
+      sticky.style.maxWidth = '366px';
     }
   }
 });

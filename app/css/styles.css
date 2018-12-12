@@ -136,7 +136,8 @@ h3:first-child {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  width: 90%; }
+  width: 90%;
+  max-width: 375px; }
 
 .text-container {
   width: auto;
@@ -301,7 +302,7 @@ input {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  background-image: url(../../images/Phone@2x.png);
+  background-image: url(../../images/Phonewgraph@2x.png);
   background-position: center;
   /* Center the image */
   background-repeat: no-repeat;
