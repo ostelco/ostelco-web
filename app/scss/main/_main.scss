@@ -69,6 +69,10 @@
   }
 }
 
+#success-message-custom {
+  width: 100%;
+}
+
 .input-container {
   display: flex;
   flex-direction: row;
@@ -156,7 +160,7 @@ input {
   height: 541px;
   width: 270px;
   border-radius: 27px;
-  background-color: $white-background;
+  // background-color: $white-background;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -302,6 +306,7 @@ input {
   }
   .text-div {
     width: 100%;
+    max-width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;

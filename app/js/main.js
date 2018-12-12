@@ -13,7 +13,7 @@ window.onbeforeunload = function() {
 //Make the input form sticky on scroll
 
 var myWidth = window.addEventListener('resize', function(e) {
-  console.log(e.currentTarget.innerWidth);
+  // console.log(e.currentTarget.innerWidth);
   return e.currentTarget.innerWidth;
 });
 
@@ -27,7 +27,7 @@ window.addEventListener('scroll', function(e) {
   var bottom = offsets.bottom;
 
   if (bottom <= 0) {
-    console.log('true');
+    // console.log('true');
     sticky.style.position = 'fixed';
     sticky.style.top = '8px';
     sticky.style.backgroundColor = '#2f16e8';
@@ -75,10 +75,10 @@ function sendMailFromMandrill(email) {
     function(res) {
       document.getElementById('success-message-custom').innerHTML =
         "We'll keep you posted! &#x1F60D;";
-      console.log(res);
+      // console.log(res);
     },
     function(err) {
-      console.log(err);
+      // console.log(err);
     }
   );
 }
@@ -144,7 +144,7 @@ function register($form) {
           $('.subscribe-result').html(data.msg.substring(4));
         }
 
-        console.log(data.msg);
+        // console.log(data.msg);
       } else {
         $('#success-message-custom').html("We'll keep you posted! &#x1F60D;");
         $('.subscribe-result').empty();
@@ -152,7 +152,7 @@ function register($form) {
         $('#mce-EMAIL').val('');
         sendMailFromMandrill(email);
 
-        console.log(data.msg);
+        // console.log(data.msg);
       }
     }
   });

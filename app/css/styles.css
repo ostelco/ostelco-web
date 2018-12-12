@@ -177,6 +177,9 @@ h3:first-child {
   .text-container p {
     text-align: center; }
 
+#success-message-custom {
+  width: 100%; }
+
 .input-container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -291,7 +294,6 @@ input {
   height: 541px;
   width: 270px;
   border-radius: 27px;
-  background-color: #fff;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -432,6 +434,7 @@ input {
       text-align: right; }
   .text-div {
     width: 100%;
+    max-width: 100%;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
