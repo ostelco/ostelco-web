@@ -103,9 +103,6 @@ input {
   color: $text-color-white;
 }
 
-.input-container--child {
-}
-
 .email-input {
   box-sizing: border-box;
   padding-left: 10px;
@@ -224,6 +221,22 @@ input {
   max-width: 379px;
 }
 
+// fix for annoying autofill bg-color
+
+// input:-webkit-autofill,
+// input:-webkit-autofill:hover,
+// input:-webkit-autofill:focus input:-webkit-autofill,
+// textarea:-webkit-autofill,
+// textarea:-webkit-autofill:hover textarea:-webkit-autofill:focus,
+// select:-webkit-autofill,
+// select:-webkit-autofill:hover,
+// select:-webkit-autofill:focus {
+//   border: none !important;
+//   -webkit-text-fill-color: white !important;
+//   -webkit-box-shadow: 0 0 0px 1000px #ffffff inset;
+//   transition: background-color 5000s ease-in-out 0s;
+// }
+
 // start
 // of
 // desktop
@@ -336,8 +349,12 @@ input {
     letter-spacing: normal;
     color: $text-color-white;
   }
+
+  .input-container--child {
+    flex: 1;
+  }
   .email-input {
-    // flex-grow: 2;
+    flex-grow: 2;
     /* And hide the input's outline, so the form looks like the outline */
     border: none;
   }
@@ -392,6 +409,10 @@ input {
       line-height: 1.79;
     }
   }
+}
+
+.subscribe-result {
+  text-align: center;
 }
 
 .myClass {

@@ -9,7 +9,8 @@ window.onbeforeunload = function() {
 //   window.scrollTo(0, 0);
 //   $('body').scrollTop();
 // });
-//Make the input form sticky on scroll for mobile
+
+//Make the input form sticky on scroll
 
 var myWidth = window.addEventListener('resize', function(e) {
   console.log(e.currentTarget.innerWidth);
@@ -48,6 +49,155 @@ window.addEventListener('scroll', function(e) {
   }
 });
 
+//new instantiation of mandrill
+
+var m = new mandrill.Mandrill('jjfLjytUVDALbHntg_EFnA'); //
+
+function sendMailFromMandrill(email) {
+  // var email = $('.email-input').val();
+
+  var params = {
+    template_name: 'welcome-email-version-2',
+    template_content: [],
+
+    message: {
+      from_email: 'hello@oya.sg',
+      to: [{ email: email }],
+      subject: 'Hello from OYA',
+      text: 'text in the message'
+    }
+  };
+
+  m.messages.sendTemplate(
+    params,
+    function(res) {
+      document.getElementById('success-message-custom').innerHTML =
+        "We'll keep you posted! &#x1F60D;";
+      console.log(res);
+    },
+    function(err) {
+      console.log(err);
+    }
+  );
+}
+
+// function validate_input(email) {
+//   var re = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/i;
+//   return re.test(email);
+// }
+
+$(document).ready(function() {
+  // I only have one form on the page but you can be more specific if need be.
+  var $form = $('form');
+
+  if ($form.length > 0) {
+    $('form input[type="submit"]').bind('click', function(event) {
+      // console.log('was clicked');
+      if (event) event.preventDefault();
+      // validate_input() is a validation function I wrote, you'll have to substitute this with your own.
+      // if (validate_input($form)) {
+      //
+      // }
+      register($form);
+    });
+  } else {
+    $('.subscribe-result').empty();
+  }
+});
+
+// only to clear error field when no input is provided.
+
+var onChange = function(evt) {
+  console.info(this.value);
+  // or
+  console.info(evt.target.value);
+  if (!this.value) {
+    $('.subscribe-result').empty();
+  }
+};
+var input = document.getElementById('mce-EMAIL');
+input.addEventListener('input', onChange, false);
+
+function register($form) {
+  // console.log('register is run');
+  $.ajax({
+    type: $form.attr('method'),
+    url: $form.attr('action'),
+    data: $form.serialize(),
+    cache: false,
+    dataType: 'json',
+    contentType: 'application/json; charset=utf-8',
+    error: function(err) {
+      alert(
+        'Could not connect to the registration server. Please try again later.'
+      );
+    },
+    success: function(data) {
+      if (data.result != 'success') {
+        if (data.msg.charAt(0) != 0) {
+          $('.subscribe-result').css('color', '#ff387d');
+          $('.subscribe-result').html(data.msg);
+        } else {
+          $('.subscribe-result').css('color', '#ff387d');
+          $('.subscribe-result').html(data.msg.substring(4));
+        }
+
+        console.log(data.msg);
+      } else {
+        $('#success-message-custom').html("We'll keep you posted! &#x1F60D;");
+        $('.subscribe-result').empty();
+        var email = $('#mce-EMAIL').val();
+        $('#mce-EMAIL').val('');
+        sendMailFromMandrill(email);
+
+        console.log(data.msg);
+      }
+    }
+  });
+}
+
+// Select all links with hashes to scroll to them on click
+$('a[href*="#"]')
+  // Remove links that don't actually link to anything
+  .not('[href="#"]')
+  .not('[href="#0"]')
+  .click(function(event) {
+    // On-page links
+    if (
+      location.pathname.replace(/^\//, '') ==
+        this.pathname.replace(/^\//, '') &&
+      location.hostname == this.hostname
+    ) {
+      // Figure out element to scroll to
+      var target = $(this.hash);
+      target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+      // Does a scroll target exist?
+      if (target.length) {
+        // Only prevent default if animation is actually gonna happen
+        event.preventDefault();
+        $('html, body').animate(
+          {
+            scrollTop: target.offset().top
+          },
+          1000,
+          function() {
+            // Callback after animation
+            // Must change focus!
+            var $target = $(target);
+            $target.focus();
+            if ($target.is(':focus')) {
+              // Checking if the target was focused
+              return false;
+            } else {
+              $target.attr('tabindex', '-1'); // Adding tabindex for elements not focusable
+              $target.focus(); // Set focus again
+            }
+          }
+        );
+      }
+    }
+  });
+
 // input.addEventListener('touchstart', function() {
 //   console.log('hello');
 //   //If using a non-px value, you will have to get clever, or just use 0 and live with the temporary jump.
@@ -64,17 +214,17 @@ window.addEventListener('scroll', function(e) {
 //   input.addEventListener('blur', blured);
 // });
 
-var myVar = false;
+// var myVar = false;
 
-$('#mce-EMAIL').on('touchstart', function() {
-  myVar = true;
-  console.log(myVar);
-});
+// $('#mce-EMAIL').on('touchstart', function() {
+//   myVar = true;
+//   console.log(myVar);
+// });
 
-$('#mce-EMAIL').on('blur', function() {
-  myVar = false;
-  console.log(myVar);
-});
+// $('#mce-EMAIL').on('blur', function() {
+//   myVar = false;
+//   console.log(myVar);
+// });
 
 // var focussed = input.addEventListener('focus', function(e) {
 //   console.log('element was focused', e.returnValue);
@@ -163,139 +313,6 @@ $('#mce-EMAIL').on('blur', function() {
 //     }
 //   });
 // }
-
-var m = new mandrill.Mandrill('jjfLjytUVDALbHntg_EFnA'); // This will be public
-
-function sendMailFromMandrill(email) {
-  // var email = $('.email-input').val();
-
-  var params = {
-    template_name: 'welcome-email-version-2',
-    template_content: [],
-
-    message: {
-      from_email: 'hello@oya.sg',
-      to: [{ email: email }],
-      subject: 'Hello from OYA',
-      text: 'text in the message'
-    }
-  };
-
-  m.messages.sendTemplate(
-    params,
-    function(res) {
-      document.getElementById('success-message-custom').innerHTML =
-        "We'll keep you posted! &#x1F60D;";
-      console.log(res);
-    },
-    function(err) {
-      console.log(err);
-    }
-  );
-}
-
-// function validate_input(email) {
-//   var re = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/i;
-//   return re.test(email);
-// }
-
-$(document).ready(function() {
-  // I only have one form on the page but you can be more specific if need be.
-  var $form = $('form');
-
-  if ($form.length > 0) {
-    $('form input[type="submit"]').bind('click', function(event) {
-      console.log('was clicked');
-      if (event) event.preventDefault();
-      // validate_input() is a validation function I wrote, you'll have to substitute this with your own.
-      // if (validate_input($form)) {
-      //
-      // }
-      register($form);
-    });
-  }
-});
-
-function register($form) {
-  console.log('register is run');
-  $.ajax({
-    type: $form.attr('method'),
-    url: $form.attr('action'),
-    data: $form.serialize(),
-    cache: false,
-    dataType: 'json',
-    contentType: 'application/json; charset=utf-8',
-    error: function(err) {
-      alert(
-        'Could not connect to the registration server. Please try again later.'
-      );
-    },
-    success: function(data) {
-      if (data.result != 'success') {
-        if (data.msg.charAt(0) != 0) {
-          $('.subscribe-result').css('color', '#ff387d');
-          $('.subscribe-result').html(data.msg);
-        } else {
-          $('.subscribe-result').css('color', '#ff387d');
-          $('.subscribe-result').html(data.msg.substring(4));
-        }
-
-        console.log(data.msg);
-      } else {
-        $('#success-message-custom').html("We'll keep you posted! &#x1F60D;");
-        $('.subscribe-result').empty();
-        var email = $('#mce-EMAIL').val();
-        $('#mce-EMAIL').val('');
-        sendMailFromMandrill(email);
-
-        console.log(data.msg);
-      }
-    }
-  });
-}
-
-// Select all links with hashes
-$('a[href*="#"]')
-  // Remove links that don't actually link to anything
-  .not('[href="#"]')
-  .not('[href="#0"]')
-  .click(function(event) {
-    // On-page links
-    if (
-      location.pathname.replace(/^\//, '') ==
-        this.pathname.replace(/^\//, '') &&
-      location.hostname == this.hostname
-    ) {
-      // Figure out element to scroll to
-      var target = $(this.hash);
-      target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-      // Does a scroll target exist?
-      if (target.length) {
-        // Only prevent default if animation is actually gonna happen
-        event.preventDefault();
-        $('html, body').animate(
-          {
-            scrollTop: target.offset().top
-          },
-          1000,
-          function() {
-            // Callback after animation
-            // Must change focus!
-            var $target = $(target);
-            $target.focus();
-            if ($target.is(':focus')) {
-              // Checking if the target was focused
-              return false;
-            } else {
-              $target.attr('tabindex', '-1'); // Adding tabindex for elements not focusable
-              $target.focus(); // Set focus again
-            }
-          }
-        );
-      }
-    }
-  });
-
 // $(document).ready(function() {
 //   var $form = $('#mc-embedded-subscribe-form');
 //   if ($form.length > 0) {

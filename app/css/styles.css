@@ -23,8 +23,11 @@ input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
-  -webkit-box-shadow: 0 0 0 30px #2f16e8 inset;
-  -webkit-text-fill-color: #fff !important; }
+  -webkit-box-shadow: 0 0 0px 1000px #2f16e8 inset !important;
+  -webkit-text-fill-color: #fff !important;
+  -webkit-transition: background-color 5000s ease-in-out 0s;
+  -o-transition: background-color 5000s ease-in-out 0s;
+  transition: background-color 5000s ease-in-out 0s; }
 
 a:-webkit-any-link {
   text-decoration: none; }
@@ -507,7 +510,14 @@ input {
     line-height: normal;
     letter-spacing: normal;
     color: #fff; }
+  .input-container--child {
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1; }
   .email-input {
+    -webkit-box-flex: 2;
+    -ms-flex-positive: 2;
+    flex-grow: 2;
     /* And hide the input's outline, so the form looks like the outline */
     border: none; }
   .email-button {
@@ -556,6 +566,9 @@ input {
       font-family: Telenor, sans-serif;
       font-size: 14px;
       line-height: 1.79; } }
+
+.subscribe-result {
+  text-align: center; }
 
 .myClass {
   z-index: 9999;
