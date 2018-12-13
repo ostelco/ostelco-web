@@ -5,7 +5,7 @@
     <title>OYA</title>
 
     <!-- build:css css/styles.min.css -->
-    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="stylesheet" href="../css/styles.min.css" />
     <!-- endbuild -->
     <link
       href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
@@ -18,7 +18,6 @@
       type="image/png"
       href="../../images/Favicon 16x16.png"
     />
-
     <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
 
@@ -34,24 +33,5 @@
     <!--[if lt IE 9]>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
     <![endif]-->
-
-    <!-- build:js js/main.min.js -->
-    <script src="js/lib/mandrill.min.js"></script>
-    <script src="js/lib/form-validate.js"></script>
-    <script src="js/main.js"></script>
-    <!-- endbuild -->
-    <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
-    <script>
-      // Initialize Firebase
-      var config = {
-        apiKey: 'AIzaSyAllwUcWBQTnT1c8QaNK01oKWG5UJGWU5k',
-        authDomain: 'pi-ostelco-web.firebaseapp.com',
-        databaseURL: 'https://pi-ostelco-web.firebaseio.com',
-        projectId: 'pi-ostelco-web',
-        storageBucket: 'pi-ostelco-web.appspot.com',
-        messagingSenderId: '844305452223'
-      };
-      firebase.initializeApp(config);
-    </script>
   </body>
 </html>
